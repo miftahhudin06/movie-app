@@ -1,0 +1,45 @@
+{% extends "main_layout.html" %} {% block content %}
+<a href="{% url 'movielistingpage'%}" type="button" class="btn btn-primary">
+  Back
+</a>
+<h2>{{a.name}}</h2>
+<p class="card-text">
+  <small class="text-body-secondary"
+    >({{a.mpaaRating.type}}: {{a.mpaaRating.label}})</small
+  >
+</p>
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img
+        src="{{MEDIA_ROOT}}/media/{{a.imgPath}}"
+        class="img-fluid rounded-start"
+        alt="..."
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Details</h5>
+        <p class="card-text">
+          <small class="text-body-secondary"
+            >genre: {% for i in a.genre %}{{i}},{% endfor %}</small
+          >
+        </p>
+        <p class="card-text">
+          <small class="text-body-secondary">language: {{a.language}}</small>
+        </p>
+        <p class="card-text">
+          <small class="text-body-secondary">duration: {{a.duration}}</small>
+        </p>
+        <p class="card-text">
+          <small class="text-body-secondary">user: {{a.userRating}}</small>
+        </p>
+        <h5 class="card-title">Synopsis</h5>
+        <p class="card-text">
+          <small class="text-body-secondary">{{a.description}}</small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

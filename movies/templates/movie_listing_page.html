@@ -1,0 +1,32 @@
+{% extends "main_layout.html" %} {% block content %}
+<input
+  class="form-control"
+  type="search"
+  id="searchMovie"
+  placeholder="Search movie"
+/>
+
+<br />
+<h3>Popular movies this month</h3>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  {% for x in data %}
+  <a class="col" href="{% url 'moviedetailpage' x.id %}">
+    <div class="card">
+      <img src="{{MEDIA_ROOT}}/media/{{x.imgPath}}" class="card-img-top" />
+      <div class="card-body">
+        <h5 class="card-title">{{x.name}}</h5>
+        <p class="card-text">
+          <small class="text-body-secondary">{{x.duration}} min</small>
+        </p>
+        <p class="card-text">
+          <small class="text-body-secondary"
+            >User Rating: {{x.userRating}}</small
+          >
+        </p>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% endblock %}
